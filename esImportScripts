@@ -66,6 +66,15 @@ curl -XPUT 'http://localhost:9200/tolstoy/letters/_mapping' -d '
           "source" : {
             "type" : "string"
           },
+          "toWhom" : {
+            "type" : "string"
+          },
+          "documentPointer" : {
+            "type" : "string"
+          },
+          "modern" : {
+            "type" : "string"
+          },
           "to" : {
             "properties" : {
               "firstName" : {
