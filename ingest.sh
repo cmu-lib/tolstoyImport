@@ -7,7 +7,7 @@ for JSON_FILE_IN in /Users/user/Documents/dh_mellon/tolstoy/colloquy/parsed/lett
 for JSON_FILE_OUT in /Users/user/Documents/dh_mellon/tolstoy/colloquy/parsed/output/$(basename "$JSON_FILE_IN" .json).json;
 do
 PYTHON="import json,sys;
-out = open('$JSON_FILE_OUT', 'w');
+out = open('$JSON_FILE_OUT', 'w', 'utf-8');
 with open('$JSON_FILE_IN') as json_in:
     docs = json.loads(json_in.read());
     for doc in docs:

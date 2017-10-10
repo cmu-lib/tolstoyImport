@@ -32,7 +32,8 @@ curl -XPUT 'http://localhost:9200/tolstoy/' -d '{
         "tokenizer": "whitespace",
         "filter": [
             "lowercase",
-            "word_delimiter"
+            "word_delimiter",
+            "asciifolding"
         ]
       }
     }
@@ -43,7 +44,7 @@ curl -XPUT 'http://localhost:9200/tolstoy/' -d '{
 
 curl -XPUT 'http://localhost:9200/tolstoy/letters/_mapping' -d '
 {
-    "letters" : {
+    "Letter" : {
         "properties" : {
           "content" : {
             "type" : "string"
@@ -99,7 +100,7 @@ curl -XPUT 'http://localhost:9200/tolstoy/letters/_mapping' -d '
 
 curl -XPUT 'http://localhost:9200/tolstoy/diaries/_mapping' -d '
 {
-"diaries" : {
+"Diary" : {
     "properties" : {
       "date" : {
         "type" : "long"
@@ -125,3 +126,122 @@ curl -XPUT 'http://localhost:9200/tolstoy/diaries/_mapping' -d '
 '
 
 curl -XDELETE 'http://localhost:9200/tolstoy/'
+
+
+curl -XPUT 'http://localhost:9200/tolstoy/writinghistory/_mapping' -d '
+{
+    "WritingHistory" : {
+        "properties" : {
+          "event" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          },
+          "group" : {
+            "type" : "long"
+          },
+          "startDate" : {
+            "type" : "date"
+          },
+          "endDate" : {
+            "type" : "date"
+          },
+          "referenceType" : {
+            "type" : "string"
+          },
+          "dbref" : {
+            "type" : "string"
+          }
+            }
+          }
+        }
+'
+
+curl -XPUT 'http://localhost:9200/tolstoy/reading/_mapping' -d '
+{
+    "CurrentlyReading" : {
+        "properties" : {
+              "Book" : {
+                "properties" : {
+                  "TitleEng" : {
+                    "type" : "string"
+                  },
+                  "TitleRuss" : {
+                    "type" : "string"
+                  },
+                  "AuthorEng" : {
+                    "type" : "string"
+                  },
+                  "AuthorRuss" : {
+                    "type" : "string"
+                  },
+                  "DateRead" : {
+                    "type" : "date"
+                  },
+                  "dbref" : {
+                    "type" : "string"
+                  },
+                  "BookLang" : {
+                    "type" : "string"
+                  },
+                  "DatePub" : {
+                    "type" : "date"
+                  }
+                }
+              }
+            }
+          }
+        }
+'
+
+curl -XPUT 'http://localhost:9200/tolstoy/visitors/_mapping' -d '
+{
+    "Visitor" : {
+        "properties" : {
+          "startDate" : {
+            "type" : "date"
+          },
+          "endDate" : {
+            "type" : "date"
+          },
+          "nameEng" : {
+            "type" : "string"
+          },
+          "nameRuss" : {
+            "type" : "string"
+          },
+          "place" : {
+            "type" : "string"
+          },
+          "relation" : {
+            "type" : "string"
+          },
+          "dbref" : {
+            "type" : "string"
+          }
+            }
+          }
+        }
+'
+
+curl -XPUT 'http://localhost:9200/tolstoy/event/_mapping' -d '
+{
+    "LifeEvent" : {
+        "properties" : {
+          "startDate" : {
+            "type" : "date"
+          },
+          "endDate" : {
+            "type" : "date"
+          },
+          "Event" : {
+            "type" : "string"
+          },
+          "dbref" : {
+            "type" : "string"
+          }
+            }
+          }
+        }
+'
