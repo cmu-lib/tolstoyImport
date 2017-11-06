@@ -20,6 +20,6 @@ done
 python -c "$PYTHON"
 
 # 2. use the output file from step 1 in the curl command
-curl -s -XPOST $ES_HOST/tolstoy/letters/_bulk --data-binary @$JSON_FILE_OUT
+curl -s -XPOST $ES_HOST/tolstoy/letter/_bulk --data-binary @$JSON_FILE_OUT
 
 done

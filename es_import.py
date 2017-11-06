@@ -6,7 +6,7 @@ import os
 
 ES_CLUSTER = 'http://localhost:9200/'
 ES_INDEX = 'tolstoy'
-ES_TYPE = 'diaries'
+ES_TYPE = 'diary'
 es = ElasticSearch(ES_CLUSTER)
 
 json_docs = []
